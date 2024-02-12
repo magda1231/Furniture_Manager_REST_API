@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "d30e870d-bb3b-442d-ac7a-af5fa3eb0daf",
+		"name": "My Furniture API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31344685"
+	},
+	"item": [
+		{
+			"name": "Furniture API",
+			"item": [
+				{
+					"name": "Categories",
+					"item": [
+						{
+							"name": "get Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/furniture/categories",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"furniture",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Category",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"name\": \"sleep\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/furniture/categories",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"furniture",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/furniture/categories/1",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"furniture",
+										"categories",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All Furniture Pieces",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"The response has all properties\", () => {",
+									"    pm.expect.response.to.have.status(205)",
+									"    //parse the response JSON and test three properties",
+									"    // const responseJson = pm.response.json();",
+									"    // pm.expect(responseJson.type).to.eql('vip');",
+									"    // pm.expect(responseJson.name).to.be.a('string');",
+									"    // pm.expect(responseJson.id).to.have.lengthOf(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/furniture",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"furniture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Furniture Piece by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/furniture/{{id}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"furniture",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register New Furniture Piece",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"\",\n\t\"name\": \"\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/furniture",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"furniture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Furniture Piece",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/furniture/{{id}}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"furniture",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Furniture Piece",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"pillow3\",\n    \"price\": 10,\n    \"category\":\"sleap\",\n    \"materials\": [\"lol\",\"ala\"],\n    \"dimensions\": {\n        \"height\": 1,\n        \"width\": 2,\n        \"depth\": 3\n    }\n}\n"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/furniture/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"furniture",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
